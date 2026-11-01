@@ -1,0 +1,55 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+dist/
+build/
+*.egg-info/
+node_modules/
+
+# Local env and secrets
+.env
+.env.*
+!.env.example
+*.local
+secrets/
+
+# Local runtime state
+var/
+logs/
+tmp/
+*.sqlite3
+*.db
+
+# Raspberry Pi image build outputs
+deploy/
+work/
+*.img
+*.img.xz
+*.img.gz
+*.zip
+*.bmap
+
+# IDE / OS
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+
+# Boot-partition onboarding artifacts
+openspoofen.env
+userconf.txt
+ssh
+# Tooling
+.codegraph/
+
+# Test scratch
+.tmp-test/

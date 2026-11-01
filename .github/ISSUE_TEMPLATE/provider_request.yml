@@ -1,0 +1,25 @@
+name: Provider request
+description: Ask for a VPN provider to be supported.
+labels: [provider]
+body:
+  - type: input
+    id: provider
+    attributes:
+      label: Provider
+    validations:
+      required: true
+  - type: checkboxes
+    id: access
+    attributes:
+      label: What the provider offers on Linux
+      description: See docs/reference/provider-programmatic-access.md for what each option means.
+      options:
+        - label: An official Linux CLI
+        - label: WireGuard config export
+        - label: OpenVPN config export
+        - label: An access token or API
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Links to the provider's Linux or router documentation, and anything you have tested.

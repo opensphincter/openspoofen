@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or setup help
+    url: https://github.com/opensphincter/openspoofen/discussions
+    about: Ask in Discussions rather than opening an issue.
+  - name: Security vulnerability
+    url: https://github.com/opensphincter/openspoofen/security/advisories/new
+    about: Report privately. Do not open a public issue.

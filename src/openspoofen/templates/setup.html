@@ -1,0 +1,36 @@
+{% extends "auth_base.html" %}
+{% block title %}OpenSpoofen Setup{% endblock %}
+{% block body %}
+    <main class="auth-card wide-card">
+        <div class="hero-topline">First boot</div>
+        <h1>Configure LAN access</h1>
+        <p class="muted">Set an admin password for the local dashboard.{% if require_pairing_token %} Pairing can also be enabled for first-time browsers.{% endif %}</p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+        <form method="post" action="{{ url_for('complete_setup') }}" class="stack">
+            <label>
+                Admin password
+                <input type="password" name="password" autocomplete="new-password" required>
+            </label>
+            <label>
+                Confirm password
+                <input type="password" name="password_confirm" autocomplete="new-password" required>
+            </label>
+            {% if require_pairing_token %}
+            <label>
+                Pairing token
+                <input type="text" name="pairing_token" value="{{ pairing_token }}" required>
+            </label>
+            <p class="token-help">Keep this token nearby for first-time pairing on your phone or another browser.</p>
+            {% endif %}
+            <button type="submit">Finish setup</button>
+        </form>
+        <div class="setup-notes">
+            <p>Suggested device URL on the Pi: HTTPS on LAN with a friendly hostname such as <strong>openspoofen.local</strong>.</p>
+            <p>Current topology target: {{ app_config.preferred_topology }}.</p>
+        </div>
+    </main>
+{% endblock %}

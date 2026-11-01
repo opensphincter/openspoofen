@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenSpoofen NordVPN bootstrap
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/openspoofen/openspoofen.env
+EnvironmentFile=-/etc/openspoofen/secrets/nordvpn.local.env
+ExecStart=/opt/openspoofen/bootstrap/configure-nordvpn-auth.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

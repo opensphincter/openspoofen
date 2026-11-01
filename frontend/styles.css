@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  html,
+  body,
+  #remote-app {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    overflow: hidden;
+    color: white;
+    font-family: var(--font-body);
+    background: #05080d;
+    overscroll-behavior: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  @supports (padding: env(safe-area-inset-bottom)) {
+    #remote-app {
+      padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+}
+
+@layer utilities {
+  .remote-panel-scroll {
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .remote-panel-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .remote-scale-shell {
+    touch-action: manipulation;
+    user-select: none;
+  }
+
+  .remote-scale-shell button,
+  .remote-scale-shell a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .info-value-clip {
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-all;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+}
