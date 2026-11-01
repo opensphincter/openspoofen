@@ -1,0 +1,58 @@
+name: Bug report
+description: Something on the appliance or in the web UI does not work as documented.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: OpenSpoofen version
+      placeholder: "0.2.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: hardware
+    attributes:
+      label: Hardware
+      options:
+        - Raspberry Pi 5
+        - Raspberry Pi 4
+        - Raspberry Pi 3
+        - No hardware (mock provider)
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Provider
+      options:
+        - NordVPN
+        - Mullvad
+        - ExpressVPN
+        - Proton VPN
+        - Surfshark / manual OpenVPN
+        - WireGuard profile
+        - Mock
+    validations:
+      required: true
+  - type: textarea
+    id: topology
+    attributes:
+      label: Topology
+      description: Upstream link (Wi-Fi, Ethernet, USB-Ethernet), downstream link to the TV, and anything between them.
+      placeholder: Wi-Fi upstream, built-in Ethernet to a Samsung TV
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Output from the Logs panel or `journalctl -u openspoofen-web`. Remove tokens, account emails and public IPs first.
+      render: text

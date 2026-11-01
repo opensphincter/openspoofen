@@ -1,0 +1,28 @@
+{% extends "auth_base.html" %}
+{% block title %}OpenSpoofen Sign In{% endblock %}
+{% block body %}
+    <main class="auth-card">
+        <div class="hero-topline">OpenSpoofen</div>
+        <h1>Sign in</h1>
+        <p class="muted">Use the admin password to enter the dashboard.{% if require_pairing_token %} If this browser has not been paired yet, include the pairing token from the appliance screen or setup sheet.{% endif %}</p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+        <form method="post" action="{{ url_for('do_login') }}" class="stack">
+            <input type="hidden" name="next" value="{{ next_path }}">
+            <label>
+                Admin password
+                <input type="password" name="password" autocomplete="current-password" required>
+            </label>
+            {% if require_pairing_token and not paired_browser %}
+            <label>
+                Pairing token
+                <input type="text" name="pairing_token" placeholder="required for a new browser" required>
+            </label>
+            {% endif %}
+            <button type="submit">Enter dashboard</button>
+        </form>
+    </main>
+{% endblock %}

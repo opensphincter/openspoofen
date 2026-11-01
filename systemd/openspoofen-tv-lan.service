@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenSpoofen TV Ethernet bench mode
+After=NetworkManager.service openspoofen-wifi-uplink.service
+Wants=NetworkManager.service openspoofen-wifi-uplink.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/openspoofen/openspoofen.env
+EnvironmentFile=-/etc/openspoofen/tv-ethernet-mode.env
+ExecStart=/opt/openspoofen/bootstrap/configure-tv-ethernet-mode.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

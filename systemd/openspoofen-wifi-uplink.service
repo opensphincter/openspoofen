@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenSpoofen Wi-Fi uplink bootstrap
+After=NetworkManager.service
+Wants=NetworkManager.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/openspoofen/secrets/wifi-uplink.local.env
+ExecStart=/opt/openspoofen/bootstrap/configure-wifi-uplink.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
